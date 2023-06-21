@@ -50,7 +50,7 @@ const Carousel: React.FC<CarouselProps> = () => {
   const handleBack = () => {
     setActiveStep((prevStep) => (prevStep - 1 + maxSteps) % maxSteps);
   };
-`
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-1 bg-gradient-to-b from-blue-500 to-blue-700">
       <AutoPlaySwipeableViews
@@ -67,7 +67,7 @@ const Carousel: React.FC<CarouselProps> = () => {
               height: "100vh",
               minHeight: "650px",
               maxHeight: "850px",
-`            }}
+            }}
           >
             {Math.abs(activeStep - index) <= 2 && (
               <>
