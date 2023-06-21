@@ -4,6 +4,7 @@ import { useState } from "react";
 import Carousel from "./components/PublicHome/carousel";
 import Image from "next/image";
 import Head from "next/head";
+import SliderHome from "./components/PublicHome/swiper";
 
 const Home: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -43,7 +44,16 @@ const Home: React.FC = () => {
 
   return (
     <div className="grid grid-cols-2">
-      <Carousel carouselItems={[]} />
+      {/* <Carousel carouselItems={[]} /> */}
+      <div
+        className="flex flex-col h-full justify-center bg-gradient-to-r from-indigo-600 via-blue-600 to-indigo-600"
+        style={{
+          backgroundImage:
+            "linear-gradient(45deg, rgb(63, 81, 181), rgb(96, 116, 203), rgb(63, 81, 181))",
+        }}
+      >
+        <SliderHome />
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 bg-gradient-to-b from-white to-gray-100">
         <div
           className="flex flex-col justify-center items-center py-4 md:py-6 px-2 md:px-6"

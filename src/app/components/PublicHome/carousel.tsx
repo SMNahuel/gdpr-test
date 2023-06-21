@@ -4,6 +4,12 @@ import { useState } from "react";
 import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
 
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+
 // import addToFooter from "/images/addToFooter.svg";
 import gdprDirectSmallLogo from "images/gdprDirectSmallLogo.svg";
 // import recommendationLetter from "images/recommendationLetter.svg";
