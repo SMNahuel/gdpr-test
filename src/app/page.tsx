@@ -1,91 +1,119 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from './page.module.css'
+"use client";
 
-const inter = Inter({ subsets: ['latin'] })
+import { useState } from "react";
+import Carousel from "./components/PublicHome/carousel";
+import Image from "next/image";
+import Head from "next/head";
 
-export default function Home() {
+const Home: React.FC = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  const [form, setForm] = useState({ email: "", password: "" });
+  const [error, setError] = useState("");
+
+  const onInputChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setForm((prevForm) => ({ ...prevForm, [name]: value }));
+  };
+
+  const onClickShowPassword = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
+
+  const onMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+  };
+
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    // Add your form submission logic here
+  };
+
+  const onLoginWithGoogle = () => {
+    // Add your Google login logic here
+  };
+
+  const legalHubAnchor =
+    "http://app.gdpr.direct/legal-hub/?businessName=GDPR.direct&companyAddress=Torres%20Quevedo&companyIdNumber=B95988127&companyName=Ai%20Labs%20Group%20SL&emailForLegalPurposes=legal@gdpr.direct";
+
+  const legalLinks = [
+    { title: "Privacy policy", a: legalHubAnchor },
+    { title: "Cookies policy", a: legalHubAnchor },
+    { title: "Legal notice", a: legalHubAnchor },
+  ];
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div className="grid grid-cols-2">
+      <Carousel carouselItems={[]} />
+      <div className="grid grid-cols-1 md:grid-cols-2 bg-gradient-to-b from-white to-gray-100">
+        <div
+          className="flex flex-col justify-center items-center py-4 md:py-6 px-2 md:px-6"
+          style={{ height: "100vh" }}
+        >
+          <div className="flex mt-2 ml-[-0.75rem] items-end justify-center">
+            <div className="w-[90px] sm:w-[111px]">
+              <img
+                src={"images/gdprDirectLogo.svg"}
+                className="w-full"
+                alt="logo"
+              />
+            </div>
+            <div className="ml-1">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl leading-tight text-primary">
+                GDPR
+              </h2>
+              <h2 className="text-2.5xl sm:text-3.2xl leading-tight text-secondary font-rockwell">
+                direct
+              </h2>
+            </div>
+          </div>
+          <h3 className="text-center text-3xl mt-4">Welcome</h3>
+          <p className="text-center">Log in or create a new account.</p>
+          {error && (
+            <div className="mt-3">
+              <ErrorAlert error={error} />
+            </div>
+          )}
+          {/* Your form code here */}
+          <div className="mb-2 flex justify-center">
+            <button
+              className="flex items-center bg-primary text-white text-2xl p-3"
+              onClick={onLoginWithGoogle}
+            >
+              <Image
+                className="mr-2"
+                src={"images/google-icon.svg"}
+                height={30}
+                width={30}
+              />
+              Login with Google
+            </button>
+          </div>
+          <p className="text-center opacity-50">
+            You must have a Google account to proceed
+          </p>
+          <div className="mt-8 flex justify-center">
+            {legalLinks.map((link, index) => (
+              <div key={index}>
+                <a
+                  href={link.a}
+                  className="text-secondary hover:underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {link.title}
+                </a>
+                {index < legalLinks.length - 1 && (
+                  <span className="opacity-50 mx-0.5">|</span>
+                )}
+              </div>
+            ))}
+          </div>
+          {/* <Divider> OR </Divider> */}
+          {/* Your additional code here */}
         </div>
       </div>
+    </div>
+  );
+};
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
-        </div>
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
-}
+export default Home;

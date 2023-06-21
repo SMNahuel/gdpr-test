@@ -113,7 +113,7 @@ const Carousel: React.FC<CarouselProps> = () => {
           </button>
           <div className="flex-1 h-2 mx-2 bg-white rounded">
             <div
-              className="h-full bg-secondary"
+              className="h-full bg-black"
               style={{ width: `${(activeStep / maxSteps) * 100}%` }}
             />
           </div>
