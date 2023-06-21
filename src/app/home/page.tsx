@@ -1,13 +1,33 @@
+import React from "react";
 import Nav from "../components/PrivateHome/Nav";
 import OnboardingSteps from "../components/PrivateHome/OnboardingSteps";
 import DoINeed from "../components/PrivateHome/DoINeed";
 
-export default function Home() {
+interface HomeProps {
+  goBackTo: boolean;
+  currentUser: boolean;
+  onLogout: boolean;
+  businessName: boolean;
+}
+
+const Home: React.FC<HomeProps> = ({
+  goBackTo,
+  currentUser,
+  onLogout,
+  businessName,
+}) => {
   return (
     <div>
-      <Nav />
+      <Nav
+        goBackTo={goBackTo}
+        currentUser={false}
+        onLogout={false}
+        businessName={false}
+      />
       <OnboardingSteps />
       <DoINeed />
     </div>
   );
-}
+};
+
+export default Home;

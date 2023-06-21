@@ -1,8 +1,6 @@
 import { FC } from "react";
 import Link from "next/link";
 import Image from "next/image";
-// import { ArrowBackIcon, LogoutIcon } from "@heroicons/react/outline";
-// import gdprDirectSmallLogoWhite from "images/gdprDirectSmallLogoWhite.svg";
 
 interface Props {
   currentUser: {
@@ -12,11 +10,18 @@ interface Props {
   goBackTo?: string;
   businessName?: string;
 }
-
 const headerHeight = 64;
 const blueGradient = "bg-gradient-to-r from-blue-500 to-purple-500";
 
-const Nav: FC<Props> = ({ goBackTo, currentUser, onLogout, businessName }) => {
+const Nav: FC<Props> = () => {
+  const [goBackTo, setGoBackTo] = useState(false);
+  const [businessName, setBusinessName] = useState("test");
+
+  const onLogout = () => {
+    console.log("Button clicked!");
+    // Perform any actions you want here
+  };
+
   return (
     <>
       <header className={blueGradient}>

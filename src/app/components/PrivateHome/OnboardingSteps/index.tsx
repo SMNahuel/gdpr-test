@@ -12,7 +12,7 @@ import { get, ref, update } from "firebase/database";
 import OnboardingStepsView from "./OnboardingStepsView";
 
 export default function OnboardingSteps() {
-//   const { currentUser } = useAuthContext();
+  //   const { currentUser } = useAuthContext();
 
   const [companyInfoCompleted, setCompanyInfoCompleted] = useState(false);
   const [tutorialCompleted, setTutorialCompleted] = useState(false);
@@ -27,7 +27,7 @@ export default function OnboardingSteps() {
       description:
         "Let's link your League of Legends account and see what you can learn about yourself",
       cta: "Add info",
-    //   linkTo: ADD_COMPANY_INFO,
+      //   linkTo: ADD_COMPANY_INFO,
       completed: companyInfoCompleted,
     },
     {
@@ -35,7 +35,7 @@ export default function OnboardingSteps() {
       description:
         "You will see a quick tutorial about what your company needs.",
       cta: "Learn the basics",
-    //   linkTo: UNDERSTAND_GDPR,
+      //   linkTo: UNDERSTAND_GDPR,
       completed: tutorialCompleted,
     },
     {
@@ -43,80 +43,80 @@ export default function OnboardingSteps() {
       description:
         "Finally, check out the results and let's see what you can learn about yourself.",
       cta: `Let's see those documents`,
-    //   linkTo: DOCUMENTS,
+      //   linkTo: DOCUMENTS,
       completed: false,
     },
   ];
 
-  useEffect(function () {
-    function saveUserData() {
-      try {
-        setLoading(true);
-        update(ref(db, `/${currentUser.uid}`), {
-          user: currentUser.providerData[0],
-        });
-      } catch (error) {
-        setError("Could not save user data");
-      } finally {
-        setLoading(false);
-      }
-    }
-    saveUserData();
-  });
+  // useEffect(function () {
+  //   function saveUserData() {
+  //     try {
+  //       setLoading(true);
+  //       update(ref(db, `/${currentUser.uid}`), {
+  //         user: currentUser.providerData[0],
+  //       });
+  //     } catch (error) {
+  //       setError("Could not save user data");
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   }
+  //   saveUserData();
+  // });
 
-//   useEffect(
-//     function () {
-//       async function fetchData() {
-//         try {
-//           setLoading(true);
-//           const companyIdRef = ref(
-//             db,
-//             `/${currentUser.uid}/company/companyIdNumber`
-//           );
-//           const companyIdSnapshot = await get(companyIdRef);
-//           const tutorialCompleteRef = ref(
-//             db,
-//             `/${currentUser.uid}/tutorialComplete`
-//           );
-//           const tutorialCompleteSnapshot = await get(tutorialCompleteRef);
-//           if (tutorialCompleteSnapshot.exists()) {
-//             setTutorialCompleted(true);
-//             setActiveStep(2);
-//             openSnackbar(true);
-//           } else if (companyIdSnapshot.exists()) {
-//             setCompanyInfoCompleted(true);
-//             setActiveStep(1);
-//           }
-//         } catch (error) {
-//           setError(
-//             "Could not fetch information about LOL account from the database"
-//           );
-//         } finally {
-//           setLoading(false);
-//         }
-//       }
-//       fetchData();
-//     },
-//     [currentUser.uid, openSnackbar]
-//   );
+  //   useEffect(
+  //     function () {
+  //       async function fetchData() {
+  //         try {
+  //           setLoading(true);
+  //           const companyIdRef = ref(
+  //             db,
+  //             `/${currentUser.uid}/company/companyIdNumber`
+  //           );
+  //           const companyIdSnapshot = await get(companyIdRef);
+  //           const tutorialCompleteRef = ref(
+  //             db,
+  //             `/${currentUser.uid}/tutorialComplete`
+  //           );
+  //           const tutorialCompleteSnapshot = await get(tutorialCompleteRef);
+  //           if (tutorialCompleteSnapshot.exists()) {
+  //             setTutorialCompleted(true);
+  //             setActiveStep(2);
+  //             openSnackbar(true);
+  //           } else if (companyIdSnapshot.exists()) {
+  //             setCompanyInfoCompleted(true);
+  //             setActiveStep(1);
+  //           }
+  //         } catch (error) {
+  //           setError(
+  //             "Could not fetch information about LOL account from the database"
+  //           );
+  //         } finally {
+  //           setLoading(false);
+  //         }
+  //       }
+  //       fetchData();
+  //     },
+  //     [currentUser.uid, openSnackbar]
+  //   );
 
-  const handleSnackbarClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-    openSnackbar(false);
-  };
+  // const handleSnackbarClose = (event, reason) => {
+  //   if (reason === "clickaway") {
+  //     return;
+  //   }
+  //   openSnackbar(false);
+  // };
 
   return (
     <OnboardingStepsView
-    //   currentUser={currentUser}
-      error={error}
+      //   currentUser={currentUser}
+      // error={error}
       steps={steps}
       activeStep={activeStep}
       loading={loading}
       openSnackbar={openSnackbar}
-      handleSnackbarClose={handleSnackbarClose}
-      setOpenSnackbar={setOpenSnackbar}
+      // handleSnackbarClose={handleSnackbarClose}
+      // setOpenSnackbar={setOpenSnackbar}
     />
   );
 }
