@@ -68,11 +68,11 @@ const Home: React.FC = () => {
           </div>
           <h3 className="text-center text-3xl mt-4">Welcome</h3>
           <p className="text-center">Log in or create a new account.</p>
-          {error && (
+          {/* {error && (
             <div className="mt-3">
               <ErrorAlert error={error} />
             </div>
-          )}
+          )} */}
           {/* Your form code here */}
           <div className="mb-2 flex justify-center">
             <button
@@ -84,6 +84,7 @@ const Home: React.FC = () => {
                 src={"images/google-icon.svg"}
                 height={30}
                 width={30}
+                alt="google-logo"
               />
               Login with Google
             </button>
