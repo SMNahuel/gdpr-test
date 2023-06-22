@@ -44,7 +44,6 @@ const Home: React.FC = () => {
 
   return (
     <div className="grid grid-cols-2">
-      {/* <Carousel carouselItems={[]} /> */}
       <div
         className="flex flex-col h-full justify-center bg-gradient-to-r from-indigo-600 via-blue-600 to-indigo-600"
         style={{
