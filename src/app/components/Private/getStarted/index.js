@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 function getStarted() {
   const addInfo = () => {
@@ -20,36 +21,34 @@ function getStarted() {
           </div>
         </div>
         <div>
-          <h2 className="lg:text-[3rem] text-[#3F51B5]">1 Add company</h2>
+          <h2 className="lg:text-[2.5rem] text-[#3F51B5] font-bold">
+            1 Add company
+          </h2>
           <p>
             Let's link your League of Legends account and see what you can learn
             about yourself
           </p>
           <div className="mb-2">
-            <button
-              className="flex items-center bg-[#F2B434] text-white text-2xl p-3"
-              onClick={addInfo}
-            >
-              Add info
-            </button>
+            <Link href={"private/add-company-info"}>
+              <button className="flex items-center bg-[#F2B434] text-white text-2xl p-3">
+                Add info
+              </button>
+            </Link>
           </div>
           <div className="mb-2 flex items-center">
-            <button
-              className="flex items-center bg-transparent border-4 text-black b-black text-2xl p-3"
-              onClick={addInfo}
-            >
+            <button className="flex items-center bg-transparent border-4 text-black b-black text-2xl p-3">
               Next
             </button>
             <p className="text-[1.2rem]">Complete this step first</p>
           </div>
         </div>
         <div>
-          <h2 className="lg:text-[3rem] text-slate-600 font-bold">
+          <h2 className="lg:text-[2.5rem] text-slate-600 font-bold">
             2 Understand GDPR
           </h2>
         </div>
         <div>
-          <h2 className="lg:text-[3rem] text-slate-600 font-bold">
+          <h2 className="lg:text-[2.5rem] text-slate-600 font-bold">
             3 Well done!
           </h2>
         </div>
