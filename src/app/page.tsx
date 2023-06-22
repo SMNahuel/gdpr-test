@@ -55,51 +55,49 @@ const Home: React.FC = () => {
         <SliderHome />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 bg-gradient-to-b from-white to-gray-100">
-        <div
-          className="flex flex-col justify-center items-center py-4 md:py-6 px-2 md:px-6"
-          style={{ height: "100vh" }}
-        >
+        <div className="flex flex-col justify-center items-center py-4 md:py-6 px-2 md:px-6 w-[50vw]">
           <div className="flex mt-2 ml-[-0.75rem] items-end justify-center">
-            <div className="w-[90px] sm:w-[111px]">
-              <img
-                src={"images/gdprDirectLogo.svg"}
-                className="w-full"
+            <div className="flex items-center h-48 w-80">
+              <Image
+                src={"images/gdprDirectSmallLogo.svg"}
+                width={150}
+                height={60}
                 alt="logo"
               />
-            </div>
-            <div className="ml-1">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl leading-tight text-primary">
-                GDPR
-              </h2>
-              <h2 className="text-2.5xl sm:text-3.2xl leading-tight text-secondary font-rockwell">
-                direct
-              </h2>
+              <div className="ml-1">
+                <h2 className="text-3xl sm:text-4xl lg:text-[5rem] leading-tight font-bold text-[#3F51B5]">
+                  GDPR
+                </h2>
+                <h2 className="text-[4rem] sm:text-3.2xl leading-tight text-secondary font-['Arvo'] text-[#F2B434] font-bold">
+                  direct
+                </h2>
+              </div>
             </div>
           </div>
-          <h3 className="text-center text-3xl mt-4">Welcome</h3>
-          <p className="text-center">Log in or create a new account.</p>
-          {/* {error && (
-            <div className="mt-3">
-              <ErrorAlert error={error} />
-            </div>
-          )} */}
-          {/* Your form code here */}
+          <h3 className="text-center font-bold text-[4.5rem]">Welcome</h3>
+          <p className="text-center text-[1.7em] pb-6">
+            Log in or create a new account.
+          </p>
           <div className="mb-2 flex justify-center">
             <button
-              className="flex items-center bg-primary text-white text-2xl p-3"
+              className="flex items-center bg-[#3F51B5] text-white text-2xl p-3"
               onClick={onLoginWithGoogle}
             >
-              <Image
-                className="mr-2"
-                src={"images/google-icon.svg"}
-                height={30}
-                width={30}
-                alt="google-logo"
-              />
+              {" "}
               Login with Google
+              <span>
+                {" "}
+                <Image
+                  className="mr-2"
+                  src={"images/google-icon.svg"}
+                  height={30}
+                  width={30}
+                  alt="google-logo"
+                />
+              </span>
             </button>
           </div>
-          <p className="text-center opacity-50">
+          <p className="text-center opacity-50 pt-6">
             You must have a Google account to proceed
           </p>
           <div className="mt-8 flex justify-center">
@@ -107,20 +105,18 @@ const Home: React.FC = () => {
               <div key={index}>
                 <a
                   href={link.a}
-                  className="text-secondary hover:underline"
+                  className="text-secondary hover:underline  text-[#F2B434] text-[1.2rem] mr-3"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   {link.title}
                 </a>
                 {index < legalLinks.length - 1 && (
-                  <span className="opacity-50 mx-0.5">|</span>
+                  <span className="opacity-50 mx-0.5 mr-2">|</span>
                 )}
               </div>
             ))}
           </div>
-          {/* <Divider> OR </Divider> */}
-          {/* Your additional code here */}
         </div>
       </div>
     </div>
