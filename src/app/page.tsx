@@ -5,6 +5,7 @@ import Carousel from "./components/PublicHome/carousel";
 import Image from "next/image";
 import Head from "next/head";
 import SliderHome from "./components/PublicHome/swiper";
+import Link from "next/link";
 
 const Home: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -78,23 +79,25 @@ const Home: React.FC = () => {
             Log in or create a new account.
           </p>
           <div className="mb-2 flex justify-center">
-            <button
-              className="flex items-center bg-[#3F51B5] text-white text-2xl p-3"
-              onClick={onLoginWithGoogle}
-            >
-              {" "}
-              Login with Google
-              <span>
+            <Link href={"/private"}>
+              <button
+                className="flex items-center bg-[#3F51B5] text-white text-2xl p-3"
+                onClick={onLoginWithGoogle}
+              >
                 {" "}
-                <Image
-                  className="mr-2"
-                  src={"images/google-icon.svg"}
-                  height={30}
-                  width={30}
-                  alt="google-logo"
-                />
-              </span>
-            </button>
+                Login with Google
+                <span>
+                  {" "}
+                  <Image
+                    className="mr-2"
+                    src={"images/google-icon.svg"}
+                    height={30}
+                    width={30}
+                    alt="google-logo"
+                  />
+                </span>
+              </button>
+            </Link>
           </div>
           <p className="text-center opacity-50 pt-6">
             You must have a Google account to proceed
