@@ -34,7 +34,7 @@ function Documents() {
       >
         <div className="grid grid-cols-2 mx-64 gap-20 h-[20rem] pt-12 ">
           {boxItems.map((item, index) => (
-            <Box item={item} />
+            <Box item={item} key={index} />
           ))}
         </div>
       </div>
