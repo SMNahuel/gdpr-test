@@ -4,7 +4,7 @@ import Image from "next/image";
 function Nav() {
   return (
     <div
-      className="flex w-screen h-20 items-center justify-between bg-gradient-to-r from-indigo-600 via-blue-600 to-indigo-600"
+      className="flex w-screen h-[10vh] items-center justify-between bg-gradient-to-r from-indigo-600 via-blue-600 to-indigo-600"
       style={{
         backgroundImage:
           "linear-gradient(45deg, rgb(63, 81, 181), rgb(96, 116, 203), rgb(63, 81, 181))",
