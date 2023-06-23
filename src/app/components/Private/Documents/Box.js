@@ -26,8 +26,10 @@ function DocumentBox({ item }) {
         </p>
       </div>
       <div className="grid grid-cols-2 gap-2">
-        <Link passHref href={item.src}>
-          <ButtonBlue />
+        <Link passHref legacyBehavior href={item.src}>
+          <a>
+            <ButtonBlue />
+          </a>
         </Link>
         <ButtonShare />
       </div>

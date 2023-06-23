@@ -8,7 +8,7 @@ function Documents() {
       title: "Public documents",
       img: "/images/personalSite.svg",
       text: "This takes you to the Legal Hub. You should share this link with everyone: in your website, marketing emails, and so on",
-      src: "/legal-hub/",
+      src: "/privacy/legal-hub",
       bgColor: "bg-white",
       textColor: "text-black",
     },
