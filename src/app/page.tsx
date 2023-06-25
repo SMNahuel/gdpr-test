@@ -6,12 +6,23 @@ import Image from 'next/image';
 import Head from 'next/head';
 import SliderHome from './components/PublicHome/swiper';
 import Link from 'next/link';
-import { loginWithGoogle } from './firebase/database';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { auth } from './firebase/firebase';
+import {
+    signInWithPopup,
+    GoogleAuthProvider,
+    UserCredential,
+} from 'firebase/auth';
+import { setAuth } from '@/redux/features/authSlice';
+import { cookies } from 'next/dist/client/components/headers';
 
 const Home: React.FC = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [form, setForm] = useState({ email: '', password: '' });
     const [error, setError] = useState('');
+
+    const dispatch = useAppDispatch();
+    auth;
 
     const onInputChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
@@ -32,9 +43,15 @@ const Home: React.FC = () => {
         event.preventDefault();
         // Add your form submission logic here
     };
+    const googleAuth = new GoogleAuthProvider();
 
-    const onLoginWithGoogle = () => {
-        loginWithGoogle();
+    const onLoginWithGoogle = async () => {
+        const { user }: UserCredential = await signInWithPopup(
+            auth,
+            googleAuth
+        );
+        const { displayName: name, uid, photoURL: avatar } = user;
+        dispatch(setAuth({ name, uid, avatar }));
     };
 
     const legalHubAnchor =
@@ -84,25 +101,23 @@ const Home: React.FC = () => {
                         Log in or create a new account.
                     </p>
                     <div className="mb-2 flex justify-center">
-                        <Link href={'/private'}>
-                            <button
-                                className="flex items-center bg-[#3F51B5] text-white text-2xl p-3"
-                                onClick={onLoginWithGoogle}
-                            >
+                        <button
+                            className="flex items-center bg-[#3F51B5] text-white text-2xl p-3"
+                            onClick={onLoginWithGoogle}
+                        >
+                            {' '}
+                            Login with Google
+                            <span>
                                 {' '}
-                                Login with Google
-                                <span>
-                                    {' '}
-                                    <Image
-                                        className="mr-2"
-                                        src={'images/google-icon.svg'}
-                                        height={30}
-                                        width={30}
-                                        alt="google-logo"
-                                    />
-                                </span>
-                            </button>
-                        </Link>
+                                <Image
+                                    className="mr-2"
+                                    src={'images/google-icon.svg'}
+                                    height={30}
+                                    width={30}
+                                    alt="google-logo"
+                                />
+                            </span>
+                        </button>
                     </div>
                     <p className="text-center opacity-50 pt-6">
                         You must have a Google account to proceed
