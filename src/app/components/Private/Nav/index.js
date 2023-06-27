@@ -26,8 +26,8 @@ function Nav() {
       </div>
       <div className="flex items-center mr-6">
         <div className="mr-12 text-white text-[1.2rem]">Usuario</div>
-        <div>
-          <button className="text-white text-[1.2rem] border-2 p-3">
+        <div className="rounded border-2 border-white">
+          <button className="text-white p-3">
             Log Out
           </button>
         </div>

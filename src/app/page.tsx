@@ -7,6 +7,24 @@ import Head from "next/head";
 import SliderHome from "./components/PublicHome/swiper";
 import Link from "next/link";
 
+const Struct = ({ item }: any) => {
+  return (
+    <div>
+      <h2 className="text-white text-center text-[4rem] leading-[3.9rem] font-bold">
+        {item.claim}
+      </h2>
+      <div className="w-full h-[30rem] max-h-520px">
+        `{" "}
+        <img
+          src={item.img}
+          alt={item.claim}
+          className="w-full h-full object-contain"
+        />
+      </div>
+    </div>
+  )
+}
+
 const Home: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [form, setForm] = useState({ email: "", password: "" });
@@ -42,7 +60,21 @@ const Home: React.FC = () => {
     { title: "Cookies policy", a: legalHubAnchor },
     { title: "Legal notice", a: legalHubAnchor },
   ];
-
+  const carouselItems = [
+    {
+      img: "images/setupWizard.svg",
+      claim:
+        "Ensure compliance, save time and effort, improve consistency and reduce risk",
+    },
+    {
+      img: "/images/recommendationLetter.svg",
+      claim: "Implement effective GDPR-compliance in less than 10 minutes",
+    },
+    {
+      img: "/images/addToFooter.svg",
+      claim: "Get all the documents you need and add them to your platforms",
+    },
+  ];
   return (
     <div className="grid grid-cols-2">
       <div
@@ -52,7 +84,7 @@ const Home: React.FC = () => {
             "linear-gradient(45deg, rgb(63, 81, 181), rgb(96, 116, 203), rgb(63, 81, 181))",
         }}
       >
-        <SliderHome />
+        <SliderHome items={carouselItems} Struct={Struct} />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 bg-gradient-to-b from-white to-gray-100">
         <div className="flex flex-col justify-center items-center py-4 md:py-6 px-2 md:px-6 w-[50vw]">
